@@ -1,0 +1,48 @@
+<div class="md-toolbar-tools message-details-top">
+    <span ui-sref="chatList" class="back-button">&#8592;</span>
+    <div class="group-members">{{membersInvolved}}</div>
+</div>
+<md-content class="md-padding message-details-mid">
+    <md-list flex>
+        <md-list-item ng-style="{background: item.who === identity ? '#c4fbc4' : 'lightgray'}"
+                      ng-repeat="item in todos" class="md-3-line message-detail-item">
+            <div ng-if="item.who !== identity" layout="row" flex="50">
+                <img ng-src="img/{{item.face}}" class="md-avatar" alt="{{item.who}}"/>
+                <div class="md-list-item-text" layout="column" layout-align="flex-start">
+                    <div>
+                        <h3>{{ item.who }}</h3>
+                    </div>
+                    <h3 class="message-time">
+                        {{item.when | date: 'hh:mma'}}
+                    </h3>
+                </div>
+            </div>
+            <div class="message-content align-right" ng-if="item.who !== identity" flex="50">
+                {{ item.notes }}
+            </div>
+
+            <div ng-if="item.who === identity" flex class="message-content align-left">
+                {{ item.notes }}
+                <div ng-if="item.image" flex>
+                    <img class="uploaded-image"
+                         ngf-src="item.image"
+                         ngf-background="item.image"
+                         ngf-resize="{width: 200, height: 200, quality: 0.9}"
+                         ngf-no-object-url="true"
+                    >
+                </div>
+            </div>
+            <div ng-if="item.who === identity" layout="row" flex>
+                <div class="md-list-item-text" layout="column" layout-align="flex-end">
+                    <div>
+                        <h3>{{ item.who }}</h3>
+                    </div>
+                    <h3 class="message-time">
+                        {{item.when | date: 'hh:mma'}}
+                    </h3>
+                </div>
+                <img class="face-image-position md-avatar" ng-src="img/{{item.face}}" alt="{{item.who}}"/>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-content>

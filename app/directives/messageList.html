@@ -1,0 +1,45 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+    <div flex-gt-sm="50" flex>
+        <md-toolbar layout="row" class="theme-color">
+            <div class="md-toolbar-tools theme-color">
+                <span>WazzApp</span>
+            </div>
+        </md-toolbar>
+        <md-content>
+            <md-tabs md-selected="1" md-dynamic-height md-border-bottom>
+                <md-tab label="CALLS">
+                    <md-content class="md-padding">
+                        <p>None.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="CHATS">
+                    <md-content class="md-padding-1">
+                        <md-list flex>
+                            <md-list-item class="md-3-line message-list-item" ng-repeat="item in todos" ng-click="getChatMessages(item.id)">
+                                <img ng-src="img/{{item.face}}" class="md-avatar" alt="{{item.who}}"/>
+                                <div layout="row" class="user-message" layout-align="space-between flex-start">
+                                    <div class="md-list-item-text" layout="column">
+                                        <div layout="row" layout-align="">
+                                            <h3>{{ item.who }}</h3>
+                                        </div>
+                                        <p>{{ item.notes }}</p>
+                                    </div>
+                                    <span class="align-right">
+                                        {{item.when | date: 'h:mma'}}
+                                    </span>
+                                </div>
+
+                                <md-divider></md-divider>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </md-tab>
+                <md-tab label="CONTACTS">
+                    <md-content class="md-padding">
+                        <p>None.</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</div>
